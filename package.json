@@ -3,12 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.13",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "clamp-js": "^0.7.0",
+    "connected-react-router": "^6.8.0",
+    "element-react": "^1.4.34",
+    "element-theme-default": "^1.4.13",
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.26.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-dom": "npm:@hot-loader/react-dom",
+    "react-edit-inline": "^1.0.8",
+    "react-icons": "^3.10.0",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "reconnecting-websocket": "^4.4.0",
+    "redux": "^4.0.5",
+    "riek": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-hot-loader": "4.12.18"
   }
 }

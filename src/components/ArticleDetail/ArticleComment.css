@@ -1,0 +1,39 @@
+.comment-card {
+  display: flex;
+  justify-content: flex-start;
+  margin: 3%;
+  margin-top: 5%;
+  width: 94%;
+  /*align-items: center;*/
+}
+
+.comment-card-right {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+}
+
+.comment-content {
+  background-color: #fafafa;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.comment-author {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 2%;
+  padding-left: 0;
+}
+
+.comment-author-img {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  background-color: black;
+  background-position: center center;
+  background-size: cover;
+  margin-right: 5%;
+  margin-top: 2%;
+}

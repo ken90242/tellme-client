@@ -1,0 +1,111 @@
+.external-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-wrapper {
+  margin-top: 1%;
+  padding: 5%;
+  padding-bottom: 3%;
+  width: 20%;
+  margin-left: 15%;
+  margin-right: 5%;
+
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 1px;
+  border-color: #5a6879;
+}
+
+.form-footer {
+  display: flex;
+  /*justify-content: flex-start;*/
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+.login_3rdparty_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  width: 25vw;
+  /*border-radius: 40px;*/
+  margin: 2%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1.5%;
+  padding-left: 3%;
+  padding-right: 3%;
+  font-weight: 480;
+}
+
+.login_3rdparty_button:hover {
+  cursor: pointer;
+  opacity: .85;
+}
+
+.thirdparty-form-wrapper {
+  margin-top: 2%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.facebook {
+  background-color: #3b5899;
+  color: white;
+}
+
+.github {
+  background-color: rgb(49, 49, 49);
+  color: white;
+}
+
+.linkedin {
+  background-color: rgb(36, 119, 181);
+  color: white;
+}
+
+.google {
+  background-color: rgb(198, 61, 38);
+  color: white;
+}
+
+.logo-wrapper {
+  margin-right: 5%;
+}
+
+.login_3rdparty_button img {
+  max-width: 32px;
+  max-height: 32px;
+  z-index: 999;
+}
+
+.linkedin img {
+  max-width: 24px;
+  max-height: 24px;
+  margin-left: 4px;
+  margin-right: 3px;
+  padding: 8%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.google img {
+  max-width: 24px;
+  max-height: 24px;
+  margin-left: 4px;
+  margin-right: 3px;
+  padding: 8%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+

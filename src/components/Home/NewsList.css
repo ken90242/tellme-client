@@ -1,0 +1,33 @@
+.newsList {
+  margin: auto;
+  width: 65%;
+  margin-right: 20%;
+}
+
+.news-sepate-line {
+  color: #eef1f6;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 10%;
+  width: 88%;
+}
+
+
+ul {
+  text-align: center;
+  margin-bottom: 6%;
+}
+
+.post-article-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: auto;
+  /*margin-top: 10%;*/
+  margin-bottom: 0;
+  margin-right: 2%;
+}
+
+.post-article-button-wrapper > button {
+  background-color: #007bff;
+  border-color: #007bff;
+}

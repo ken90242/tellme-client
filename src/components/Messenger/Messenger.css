@@ -1,0 +1,39 @@
+.messenger-wrapper {
+  margin-right: 12%;
+  margin-left: 12%;
+  width: 76%;
+  display: flex;
+}
+
+.messenger-left-block {
+  width: 22%;
+}
+
+.chat-auther-list {
+  border-style: solid;
+  border-color: #dfdfdf;
+  border-width: .5px;
+  padding: 0;
+}
+
+.messenger-right-block {
+  display: flex;
+  flex-direction: column;
+  width: 78%;
+  height: 71vh;
+  overflow-y: auto;
+}
+
+.chat-message-list {
+  margin-bottom: 0;
+}
+
+.chat-input-message {
+  max-width: 40%;
+  margin-left: 5.5%;
+  position: absolute;
+  bottom: 3%;
+  left: 26%;
+}
+
+

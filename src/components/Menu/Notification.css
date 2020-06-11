@@ -1,0 +1,51 @@
+.popover-notification {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.notification-message {
+  text-align: left;
+  padding: 3%;
+  padding-left: 6%;
+  padding-right: 6%;
+  font-size: 1.3rem;
+  margin-bottom: 2%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.notification-message-left {
+  width: 10%;
+}
+
+.notification-message-right {
+  width: 80%;
+  font-size: .7rem;
+}
+
+.notification-message-author {
+  color: #007bff;
+  font-weight: bolder;
+}
+
+.notification-message-author:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.notification-message-content {
+  color: #303030;
+  font-style: italic;
+}
+
+.notification-message-content:hover {
+  /*text-decoration: underline;*/
+  color: #000000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.notification-message-time {
+  color: #A0A0A0;
+}

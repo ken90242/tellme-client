@@ -1,0 +1,57 @@
+.Tabs-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 12%;
+  margin-right: 12%;
+  width: 76%;
+}
+
+.Tabs {
+}
+
+.el-tabs__item{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.el-tabs {
+  width: 100%;
+}
+
+.qa-classify-area {
+  margin-left: 12%;
+  margin-right: 12%;
+  width: 76%; 
+  margin-bottom: 2%;
+}
+
+.qa-classify-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0,0,0,.05);
+  border-style: solid;
+  border-color: rgba(0,0,0,.125);
+  border-width: 1px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.qa-classify-tag-group {
+  padding: 2%;
+  border-style: solid;
+  border-color: rgba(0,0,0,.125);
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-width: 0px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.qa-classify-tag {
+  margin-right: 1%;
+  font-weight: bolder;
+}

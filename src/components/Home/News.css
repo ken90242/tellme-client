@@ -1,0 +1,237 @@
+li {
+  list-style: none;
+}
+
+.card {
+  border-style: solid;
+  border-radius: 50px;
+  border-color: rgb(208, 217, 224);
+  border-width: .5px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.card-body {
+  display: flex;
+  width: 100%;
+  margin: 3% 3% 0% 3%;
+}
+
+.card:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+}
+
+.card-footer {
+  width: 100%;
+  display: flex;
+  margin-left: 7%;
+  margin-right: 4%;
+  justify-content: space-between;
+}
+
+.card-footer-left {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.card-footer-right {
+  width: 50%;
+  display: flex;
+  font-size: .5rem;
+  align-items: center;
+  color: gray;
+  justify-content: flex-end;
+}
+
+.head-img-wrapper {
+  width: 10%;
+  text-align: center;
+  margin: 0 2% 2% 2%;
+}
+
+.post {
+  width: 90%;
+  margin: 0 10px 0 10px;
+}
+
+.post-author {
+  margin: 0px;
+  text-align: left;
+  color: #007bff;
+  font-weight: bolder;
+}
+
+.post-content {
+  text-align: left;
+  font-size: 1rem;
+}
+
+.card-head-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: black;
+  background-position: center center;
+  background-size: cover;
+}
+
+.card-interaction-button {
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-interaction-button > .card-icon {
+  margin-right: .8rem;
+  font-size: 1rem;
+  display: flex;
+}
+
+.card-interaction-button:hover {
+  opacity: 1.0;
+  color: black;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.newsDetail-card {
+  border-style: solid;
+  border-radius: 20px;
+  border-color: rgb(208, 217, 224);
+  border-width: .5px;
+}
+
+.newsDetail-card > .post-content {
+  justify-content: center;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-bottom: 4%;
+  font-size: 1.4rem
+}
+
+.newsDetail-head-img-wrapper {
+  display: flex;
+  align-items: center;
+  width: 5%;
+  text-align: center;
+  padding: 5%;
+  padding-bottom: 0%;
+}
+
+.newsDetail-head-img-wrapper > .newsDetail-card-head-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: black;
+  background-position: center center;
+  background-size: cover;
+  margin-right: 50%;
+}
+
+.newsDetail-head-img-wrapper > .post-author {
+  font-size: 1.2rem;
+}
+
+.newsDetail-buttons {
+  margin: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.newsDetail-buttons > .newsDetail-buttons-input {
+  width: 80%;
+}
+
+.newsDetail-buttons > .newsDetail-buttons-input > .el-input__inner {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 5%;
+  border-color: rgb(208, 217, 224);
+  border-width: .1px;
+  border-bottom-style: solid;
+  padding-bottom: 2%;
+}
+
+.thread:last-child {
+  margin-bottom: 0;
+  border-bottom-style: none;
+}
+
+.thread > .thread-header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  text-align: center;
+  justify-content: flex-start;
+  /*padding: 5%;*/
+  padding-top: 0%;
+  padding-bottom: 0%;
+}
+
+.thread > .thread-header > .thread-head-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: black;
+  background-position: center center;
+  background-size: cover
+  /*margin-right: 50%;*/
+}
+
+.thread-author-replyer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  color: #007bff;
+  justify-content: flex-start;
+}
+
+.thread-author-replyer > .thread-post-author {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: bolder;
+  margin-left: 20px;
+  display: flex;
+  color: black;
+  justify-content: flex-start;
+}
+
+.thread-author-replyer > .thread-post-replyer {
+  width: 100%;
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 20px;
+}
+
+.thread > .therad-body {
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*justify-content: flex-start;*/
+}
+
+.thread-post-content {
+  text-align: left;
+  padding-left: 60px;
+  /*font-size: 1.2rem;*/
+}
+
+.reply_grey {
+  color: rgb(101, 119, 134);
+  font-weight: normal;
+}
+

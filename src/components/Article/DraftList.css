@@ -1,0 +1,29 @@
+.draft-list-wrapper {
+  /*width: 80%;*/
+  display: flex;
+  justify-content: center;
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+.drafts-title span {
+  /*display: inline-block;  for em, a, span, etc (inline by default) */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.drafts-tag {
+  margin-right: 3%;
+}
+
+.draft-list-wrapper > .el-table th {
+  text-align: center;
+}
+
+.drafts-ops {
+  margin-left: 3%;
+}
+
+.drafts-ops:last-child {
+  margin-right: 0;
+}

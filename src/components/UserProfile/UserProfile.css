@@ -1,0 +1,91 @@
+.user-profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.user-up-section {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 12%;
+  margin-right: 12%;
+  width: 76%;
+  margin-bottom: 5%;
+}
+
+.user-img {
+  max-width: 80%;
+  height: 50%;
+}
+
+.user-introduction {
+  margin-left: 1%;
+  margin-right: 1%;
+  padding: 1%;
+  text-align: left;
+  width: 70%
+}
+
+
+.user-basic-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-around;
+  padding: 1%;
+  width: 20%;
+}
+
+.user-basic-info-item {
+  font-size: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2%;
+}
+
+.user-basic-info-item-icon {
+  margin-right: 5%;
+}
+
+.user-down-section {
+  display: flex;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  justify-content: space-around;
+}
+
+.user-statistic-header {
+  margin-bottom: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-statistic-icon {
+  font-size: 1.2em;
+  margin-right: 3%;
+}
+
+.user-statistic-number {
+  font-size: 3em;
+  font-weight: 999;
+}
+
+.user-statistic-block {
+  width: 15%;
+}
+
+.editable:hover {
+  cursor: pointer;
+  background-color: rgba(9,30,66,.08);
+}
+
+.editable:focus {
+  cursor: text;
+  background-color: white;
+}
+
+
