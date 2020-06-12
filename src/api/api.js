@@ -1,7 +1,8 @@
 import axios from 'axios';
 import cookie from '../static/js/cookie';
 
-const host = 'http://104.155.218.110:8000';
+const host = 'https://api.tellme.ken-han.info';
+// const host = 'https://104.155.218.110:8000';
 
 axios.interceptors.request.use(
   config => {
