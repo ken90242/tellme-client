@@ -28,12 +28,12 @@
 }
 
 .comment-author-img {
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   border-radius: 50%;
-  background-color: black;
+  /* background-color: black; */
   background-position: center center;
   background-size: cover;
-  margin-right: 5%;
+  margin-right: 3%;
   margin-top: 2%;
 }

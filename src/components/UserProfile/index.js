@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { RIEInput, RIETextArea } from 'riek'
+import { RIEInput, RIETextArea, Loading } from 'riek'
 import _ from 'lodash'
 
 import { TMBreadcrumb } from '../Menu'
@@ -15,17 +15,17 @@ import { GoComment } from 'react-icons/go';
 import { GrArticle } from 'react-icons/gr';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { AiOutlineInteraction } from 'react-icons/ai';
-import { getUser, updateUser } from '../../api/api'
+import { host, getUser, updateUser } from '../../api/api'
+import userDefaultImg from '../../static/img/default-user.png'
 
-import { Message } from 'element-react';
+import { Message, Upload } from 'element-react';
 import cookie from '../../static/js/cookie';
 
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: { job_title: "", email: "", location: "" },
-      fake_intro: "什么是慕课（MOOC）？ 源于国外，Massive（大规模）Open（开放）Online（在线）Course（课程）。 慕课网是什么MOOC？ 专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的",
+      user: { job_title: "", email: "", location: "", introduction: "", picture: {} },
     };
   }
 
@@ -38,11 +38,16 @@ class UserProfile extends React.Component {
 
     updateUser(userName, attrs)
     .then((response) => {
-      this.setState(prevState => Object.assign(prevState.user, response.data));
-      Message.success({
-        message: 'Successfully updated',
-        customClass: 'element-message',
-      });
+      getUser(userName)
+      .then((response) => {
+        this.setState({ user: response.data })
+        Message.success({
+          message: 'Successfully updated',
+          customClass: 'element-message',
+        });
+      })
+      .catch(console.log)
+      // this.setState(prevState => Object.assign(prevState.user, response.data));
     })
     .catch(console.log);
   }
@@ -62,23 +67,90 @@ class UserProfile extends React.Component {
     .catch(console.log)
   }
 
+  handleAvatarScucess(upload_response, file) {
+    let userName = cookie.getCookie('username')
+
+    if ('id' in this.props.match.params) {
+      userName = this.props.match.params.id;
+    }
+
+    updateUser(userName, { picture: upload_response.id })
+    .then((response) => {
+      getUser(userName)
+      .then((response) => {
+        this.setState({ user: response.data })
+      })
+      Message.success({
+        message: 'Successfully updated',
+        customClass: 'element-message',
+      });
+    })
+    .catch(console.log);
+    // this.setState({ imageUrl: URL.createObjectURL(file.raw) });
+  }
+  
+  beforeAvatarUpload(file) {
+    const isTYPE = ['image/jpeg', 'image/png'].includes(file.type);
+    const isLt2M = file.size / 1024 / 1024 < 2;
+  
+    if (!isTYPE) {
+      Message('Avatar picture must be JPG/PNG format!');
+    }
+    if (!isLt2M) {
+      Message('Avatar picture size can not exceed 2MB!');
+    }
+    return isTYPE && isLt2M;
+  }
+
   render() {
     // <span class="user-basic-info-item">{this.state.user.job_title}</span>
+    const pic =(<div className="avatar-wrapper">
+                  <img
+                    alt="user"
+                    src={this.state.user.picture ? this.state.user.picture.file : userDefaultImg }
+                    className="avatar" />
+                </div>);
+
     return (
       <Fragment>
         <TMBreadcrumb currentPath={this.props.location.pathname}/>
         <section class="user-profile-wrapper">
           <section class="user-up-section">
-            <img class="user-img" alt="user" src="http://img.liaogx.com/media%2Fcache%2F29%2F21%2F2921e284c72c34f3a67f39c07980919f.jpg"/>
+            {
+              this.state.user.is_login_user === true ?
+              <Upload
+                action={`${host}/upload-user-picture/`}
+                headers={{'X-CSRFToken': cookie.getCookie("csrftoken")}}
+                name="file"
+                showFileList={false}
+                onSuccess={(res, file) => this.handleAvatarScucess(res, file)}
+                beforeUpload={file => this.beforeAvatarUpload(file)}>
+                <div className="avatar-wrapper">
+                  <img alt="user" className="avatar"
+                    src={this.state.user.picture ? this.state.user.picture.file : userDefaultImg }/>
+                  <i className="el-icon-upload2 img__description"></i>
+                </div>
+              </Upload> :
+              <Fragment>
+                <div className="avatar-wrapper">
+                  <img alt="user" className="avatar"
+                    src={this.state.user.picture ? this.state.user.picture.file : userDefaultImg } />
+                </div>
+              </Fragment>
+            }
             <div class="user-introduction">
-              <RIETextArea
+              {
+                this.state.user.is_login_user ?
+                <RIETextArea
                   className="user-basic-info-item editable"
                   rows="8"
                   cols="60"
-                  value={this.state.fake_intro}
+                  value={this.state.user.introduction ? this.state.user.introduction : "There is no introduction to this user"}
                   change={this.dataChanged.bind(this)}
                   propName='introduction'
-                  validate={_.isString} />
+                  validate={_.isString} /> :
+                <span class="user-basic-info-item">{this.state.user.introduction}</span>
+              }
             </div>
             <div class="user-basic-info">
               <div class="user-basic-info-item">

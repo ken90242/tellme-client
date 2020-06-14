@@ -18,6 +18,9 @@
   padding: 2%;
   max-height: 100%;
   max-width: 100%;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
 
 .chat-message-block {

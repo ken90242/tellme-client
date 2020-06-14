@@ -1,12 +1,16 @@
 import axios from 'axios';
 import cookie from '../static/js/cookie';
 
-const host = 'https://api.tellme.ken-han.info';
+import router from '../router'
+import { history } from '../history'
+import { Message } from 'element-react';
+
+export const host = 'https://tellme.ken-han.info/api';
 // const host = 'https://104.155.218.110:8000';
 
 axios.interceptors.request.use(
   config => {
-  if (cookie.getCookie('token')) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
+  if (cookie.getCookie('token')) {  // 每个http header都加上 JWT token
     config.headers.Authorization = `JWT ${ cookie.getCookie('token') }`;
   }
   return config;
@@ -20,21 +24,26 @@ axios.interceptors.response.use(
   undefined,
   error => {
     let res = error.response;
+    let err_msg = "Unknown Error"
     switch (res.status) {
+      case 400:
+        err_msg = "Please check your internet connection"
       case 401:
+        cookie.delCookie("token");
+        cookie.delCookie("username");
         // 返回 401 清除token信息并跳转到登录页面
-        // store.commit(types.LOGOUT);
-        console.log('未登录');
-        // router.replace({
-        //   path: '/app/login',
-        //   query: {redirect: router.currentRoute.fullPath}
-        // })
+        err_msg = "Please login"
       case 403:
-        console.log('您没有该操作权限');
-        // alert('您没有该操作权限');
+        err_msg = "Lack of permission"
+        // console.log('您没有该操作权限');
       case 500:
-        console.log('服务器错误');
-        // alert('服务器错误');
+        err_msg = "Server Error"
+      default:
+        // Message.error({
+        //   message: err_msg,
+        //   customClass: 'element-message',
+        // });
+        history.replace('/login');
     }
     return Promise.reject(error.response.data)   // 返回接口返回的错误信息
 });
@@ -87,6 +96,8 @@ export const publishArticle = params => axios.post(`${host}/draft/`, params)
 export const getDrafts = () => axios.get(`${host}/draft/`)
 
 export const getDraftDetail = id => axios.get(`${host}/draft/${id}`)
+
+export const deleteDraftDetail = id => axios.delete(`${host}/draft/${id}`)
 
 export const createDraft = params => axios.post(`${host}/draft/`, params)
 

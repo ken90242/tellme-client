@@ -6,7 +6,7 @@
 }
 
 .messenger-left-block {
-  width: 22%;
+  width: 28%;
 }
 
 .chat-auther-list {
@@ -19,7 +19,7 @@
 .messenger-right-block {
   display: flex;
   flex-direction: column;
-  width: 78%;
+  width: 70%;
   height: 71vh;
   overflow-y: auto;
 }
@@ -32,8 +32,8 @@
   max-width: 40%;
   margin-left: 5.5%;
   position: absolute;
-  bottom: 3%;
-  left: 26%;
+  bottom: 2%;
+  left: 33%;
 }
 
 

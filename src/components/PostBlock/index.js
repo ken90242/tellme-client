@@ -16,8 +16,8 @@ import { GoComment } from 'react-icons/go';
 import { GrArticle } from 'react-icons/gr';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { AiOutlineInteraction } from 'react-icons/ai';
-
-import { getMarkdonPreview, publishArticle, publishQuestion, getDraftDetail, createDraft, updateDraft, publishDraft } from '../../api/api'
+import cookie from '../../static/js/cookie';
+import { host, getMarkdonPreview, publishArticle, publishQuestion, getDraftDetail, createDraft, updateDraft, publishDraft } from '../../api/api'
 
 
 class PostBlock extends React.Component {
@@ -119,15 +119,23 @@ class PostBlock extends React.Component {
 
     apiPromise
     .then((response) => {
-        Message.success({
-          message: 'Successfully posted',
-          customClass: 'element-message',
-        });
         if (status === "P") {
-          this.props.history.push('/home')
+          Message.success({
+            message: 'Successfully posted',
+            customClass: 'element-message',
+          });
+          this.props.history.push('/article')
         } else if (status === "D") {
+          Message.success({
+            message: 'Successfully saved',
+            customClass: 'element-message',
+          });
           this.props.history.push('/draft')
         } else if (status === "O") {
+          Message.success({
+            message: 'Successfully posted',
+            customClass: 'element-message',
+          });
           this.props.history.push('/qa')
         } 
     })
@@ -207,8 +215,10 @@ class PostBlock extends React.Component {
                   <Upload
                     className="upload-demo"
                     drag
+                    headers={{'X-CSRFToken': cookie.getCookie("csrftoken")}}
                     limit={1}
-                    action="http://104.155.218.110:8000/upload/"
+                    action={`${host}/upload/`}
+                    name="file"
                     multiple={false}
                     onSuccess={ response => { this.state.image = response.id } }
                     tip={<div className="el-upload__tip">only accept jpg/png type, must smaller than 500 KB</div>}

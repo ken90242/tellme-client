@@ -8,6 +8,7 @@ import { Button, Dialog, Form, Input, Message } from 'element-react';
 
 import './News.css'
 import { addNews, switchNewsLike, deleteNews, getNewsDetail } from '../../api/api'
+import userDefaultImg from '../../static/img/default-user.png'
 
 import { connect } from 'react-redux'
 import * as actionCreators from '../../actions'
@@ -113,7 +114,9 @@ class News extends React.Component {
         <section className="card" onClick={ this.props.makeNewsVisble.bind(this, { uuid_id: this.props.news.uuid_id }) }>
           <div className="card-body">
             <div className="head-img-wrapper">
-              <img className="card-head-img" src="https://shop.line-scdn.net/themeshop/v1/products/d5/46/a2/d546a2d4-27a8-48d7-8bf4-ad88815e8c75/17/WEBSTORE/icon_198x278.png"></img>
+              <img
+                className="card-head-img"
+                src={ this.props.news.user.picture ? this.props.news.user.picture.file : userDefaultImg} />
             </div>
             <div className="post">
               <p className="post-author"><Link className="no-textdecoration" to={`/user/${this.props.news.user.username}`}>{ this.props.news.user.username }</Link></p>
@@ -149,7 +152,9 @@ class News extends React.Component {
           <Dialog.Body>
             <section className="newsDetail-card">
               <div className="newsDetail-head-img-wrapper">
-                <img className="newsDetail-card-head-img" src="https://shop.line-scdn.net/themeshop/v1/products/d5/46/a2/d546a2d4-27a8-48d7-8bf4-ad88815e8c75/17/WEBSTORE/icon_198x278.png"></img>
+                <img
+                  className="newsDetail-card-head-img"
+                  src={this.props.news.user.picture ? this.props.news.user.picture.file : userDefaultImg} />
                 <p className="post-author"><Link className="no-textdecoration" to={`/user/${this.props.news.user.username}`}>{ this.props.news.user.username }</Link></p>
               </div>
               <p className="post-content">{ this.props.news.content }</p>
@@ -168,7 +173,9 @@ class News extends React.Component {
                     <Fragment key={i}>
                       <div className="thread">
                         <div className="thread-header">
-                          <img className="thread-head-img" src="https://shop.line-scdn.net/themeshop/v1/products/d5/46/a2/d546a2d4-27a8-48d7-8bf4-ad88815e8c75/17/WEBSTORE/icon_198x278.png"></img>
+                          <img
+                            className="thread-head-img"
+                            src={ thread.user.picture ? thread.user.picture.file : userDefaultImg} />
                           <div className="thread-author-replyer">
                             <p className="thread-post-author"><Link className="no-textdecoration" to={`/user/${thread.user.username}`}>{ thread.user.username }</Link>&nbsp;&nbsp;<span className="reply_grey">{ thread.updated_at }</span></p>
                             <p className="thread-post-replyer"><span className="reply_grey">Replying&nbsp;to&nbsp;</span><Link className="no-textdecoration" to={`/user/${this.props.news.user.username}`}>{ this.props.news.user.username }</Link></p>

@@ -8,7 +8,7 @@ import { FaCheckCircle } from "react-icons/fa";
 
 import { getVoteUUID, startVote, updateVote, deleteVote } from '../../api/api';
 
-
+import userDefaultImg from '../../static/img/default-user.png'
 import moment from 'moment';
 
 const Answer = ({answer, acceptAnswerFunc, updateWhole, is_login_user}) => {
@@ -98,7 +98,10 @@ const Answer = ({answer, acceptAnswerFunc, updateWhole, is_login_user}) => {
       <div class={ answer.is_answer ? "accpted-qa-answer-right" : "qa-answer-right" }>
         <div class="qa-answer-header">
           <Link className="no-textdecoration qa-answer-author-img" to={`/user/${answer.user.username}`}>
-            <img alt="user" class="qa-answer-author-img" src="https://www.trendmicro.com/content/dam/trendmicro/global/en/global/logo/logo-desktop.png"/>
+            <img
+              alt="user"
+              class="qa-answer-author-img"
+              src={ answer.user.picture ? answer.user.picture.file : userDefaultImg } />
           </Link>
           <span class="qa-answer-author"><Link className="no-textdecoration" to={`/user/${answer.user.username}`}>{ answer.user.username }</Link></span>
           <span class="qa-answer-post-time">{ moment().to(moment(answer.updated_at)) }</span>

@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 
-import { Button, Tag, Table, Icon } from 'element-react';
+import { Button, Tag, Table, Icon, Message } from 'element-react';
 import { Link } from "react-router-dom";
 
 import { TMBreadcrumb } from '../Menu'
 import './DraftList.css'
-import { getDrafts } from '../../api/api'
+import { getDrafts, deleteDraftDetail } from '../../api/api'
 import moment from 'moment';
 
 class DraftList extends React.Component {
@@ -67,12 +67,32 @@ class DraftList extends React.Component {
           labelClassName: 'drafts-header-label',
           width: 180,
           render: function(data) {
+            const deleteDraft = () => {
+              deleteDraftDetail(data.id)
+              .then((response) => {
+                Message.success({
+                  message: 'Successfully deleted',
+                  customClass: 'element-message',
+                });
+              })
+              .catch(e => {
+                Message.error({
+                  message: e.detail,
+                  customClass: 'element-message',
+                });
+              })
+            }
             return (
               <span>
                 <Link className="no-textdecoration" to={`/draft/${data.id}`}>
                   <Button className="drafts-ops" plain={true} type="info" size="small" icon="edit">Edit</Button>
                 </Link>
-               <Button className="drafts-ops" type="danger" size="small" icon="delete">Delete</Button>
+               <Button
+                className="drafts-ops"
+                type="danger"
+                size="small"
+                icon="delete"
+                onClick={deleteDraft}>Delete</Button>
               </span>
             )
           }

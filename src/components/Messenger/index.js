@@ -130,7 +130,7 @@ class Messenger extends React.Component {
           <section className="messenger-right-block">
             { 
               this.state.userMessages.length === 0 ? 
-                <span style={{ marginTop: '5%', color: 'grey' }}>Here is no message</span> : 
+                <span style={{ marginTop: '5%', color: 'grey' }}>No message here</span> : 
                 <ul className="chat-message-list">
                   { this.state.userMessages.map((message, i) => <Message className=".messages-list" key={i} message={message}/> ) }
                 </ul>

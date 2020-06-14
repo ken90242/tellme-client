@@ -12,10 +12,10 @@ const Article = ({ article }) => {
 
   return (
     <div className="article">
-      { article.image ? <img alt="article-cover" src={ article.image.file } /> : "" }
+      { article.image ? <img alt="article-cover" src={ `${article.image.file}` } /> : "" }
       <h3 className="article-title">{ article.title }</h3>
       <div className="article-content">
-        <div dangerouslySetInnerHTML={ articleContentHtml }/>
+        {/* <div dangerouslySetInnerHTML={ articleContentHtml }/> */}
       </div>
       <div className="article-footer">
         <div className="article-footer-left">

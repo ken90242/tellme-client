@@ -7,12 +7,15 @@ import { Link } from "react-router-dom";
 
 import cookie from '../../static/js/cookie';
 
-import { getJWTAuthenticatino, getUser } from '../../api/api'
+import { host, getJWTAuthenticatino, getUser, loginGithubOauth2 } from '../../api/api'
 
 import githubLogo from '../../static/img/GitHub-Mark-Light-32px.png'
 import facebookLogo from '../../static/img/Facebook-Mark-Light-58px.png'
 import linkedinLogo from '../../static/img/Linkedin-Mark-Light.png'
 import googleLogo from '../../static/img/Google-Mark-Light.png'
+import redditLogo from '../../static/img/Reddit-Mark-Color.png'
+import twitchLogo from '../../static/img/Twitch-Mark-Light.png'
+import stackoverflowLogo from '../../static/img/Stackoverflow-Mark-Light.png'
 
 import { connect } from 'react-redux'
 import * as actionCreators from '../../actions'
@@ -23,7 +26,7 @@ class LoginRegister extends React.Component {
     this.state = { 
       form: {
         password: 'ttt',
-        username: 'tesla_bro',
+        username: 'vistor',
       },
     };
   }
@@ -34,34 +37,57 @@ class LoginRegister extends React.Component {
 
   handleLogin(e) {
     e.preventDefault();
-    getJWTAuthenticatino({ ...this.state.form })
-    .then((response) => {
-      cookie.setCookie('username', this.state.form.username, 7);
-      cookie.setCookie('token', response.data.token, 7);
-      getUser(cookie.getCookie('username'))
+    try {
+      getJWTAuthenticatino({ ...this.state.form })
       .then((response) => {
-        if (response.data.is_login_user) {
-          this.props.loginUser({ user: response.data })
-          Message.success({
-            message: 'Successfully logged in',
+        cookie.setCookie('username', this.state.form.username, 7);
+        cookie.setCookie('token', response.data.token, 7);
+        getUser(cookie.getCookie('username'))
+        .then((response) => {
+          // Message.info({
+          //   message: Object.keys(response.data).concat(Object.values(response.data)).join(' '),
+          //   customClass: 'element-message',
+          // });
+          if (response.data.is_login_user) {
+            this.props.loginUser({ user: response.data })
+            Message.success({
+              message: 'Successfully logged in',
+              customClass: 'element-message',
+            });
+            this.props.history.push('/home')
+          }
+        })
+        .catch(e => {
+          let err_msg = "Unknown Error";
+          if (e.constructor === Object &&
+            'non_field_errors' in e &&
+            e.non_field_errors.length > 0) {
+            err_msg = e.non_field_errors[0];
+          }
+          Message.error({
+            message: `${err_msg}`,
             customClass: 'element-message',
           });
-          this.props.history.push('/home')
-        }
+        })
       })
       .catch(e => {
+        let err_msg = "Unknown Error";
+        if (e.constructor === Object &&
+            'non_field_errors' in e &&
+            e.non_field_errors.length > 0) {
+          err_msg = e.non_field_errors[0];
+        }
         Message.error({
-          message: `${e.non_field_errors[0]}`,
+          message: `${err_msg}`,
           customClass: 'element-message',
         });
-      })      
-    })
-    .catch(e => {
-      Message.error({
-        message: `${e.non_field_errors[0]}`,
+      })
+    } catch (err) {
+      Message.info({
+        message: err,
         customClass: 'element-message',
       });
-    })
+    }
   }
 
   handleRegister(e) {
@@ -93,22 +119,34 @@ class LoginRegister extends React.Component {
             </Form>
           </div>
           <div className="thirdparty-form-wrapper">
-            <div className="login_3rdparty_button facebook">
+            {/* <div className="login_3rdparty_button facebook">
               <div className="logo-wrapper"><img src={facebookLogo} alt="facebook"/></div>
               <span>Login with Facebook</span>
-            </div>
-            <div className="login_3rdparty_button google">
+            </div> */}
+            {/* <div className="login_3rdparty_button google">
               <div className="logo-wrapper"><img src={googleLogo} alt="google"/></div>
               <span>Login with Google</span>
-            </div>
-            <div className="login_3rdparty_button github">
+            </div> */}
+            <a className="login_3rdparty_button reddit" href={`${host}/login/reddit/`}>
+              <div className="logo-wrapper"><img src={redditLogo} alt="reddit"/></div>
+              <span>Login with Reddit</span>
+            </a>
+            <a className="login_3rdparty_button stackoverflow" href={`${host}/login/stackoverflow/`}>
+              <div className="logo-wrapper"><img src={stackoverflowLogo} alt="stackoverflow"/></div>
+              <span>Login with <span className="stack">stack</span><strong className="overlow">overflow</strong></span>
+            </a>
+            <a className="login_3rdparty_button github" href={`${host}/login/github/`}>
               <div className="logo-wrapper"><img src={githubLogo} alt="github"/></div>
               <span>Login with GitHub</span>
-            </div>
-            <div className="login_3rdparty_button linkedin">
+            </a>
+            <a className="login_3rdparty_button twitch"  href={`${host}/login/twitch/`}>
+              <div className="logo-wrapper"><img src={twitchLogo} alt="twitch"/></div>
+              <span>Login with Twitch</span>
+            </a>
+            {/* <div className="login_3rdparty_button linkedin">
               <div className="logo-wrapper"><img src={linkedinLogo} alt="linkedin"/></div>
               <span>Login with Linkedin</span>
-            </div>
+            </div> */}
           </div>
         </section>
       </Fragment>

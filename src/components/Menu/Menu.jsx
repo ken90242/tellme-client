@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { RiMessage3Line } from "react-icons/ri";
 import Notification from './Notification';
 import { withRouter } from 'react-router-dom';
+import userDefaultImg from '../../static/img/default-user.png'
 
 import './Menu.css'
 import { matchRoutes } from 'react-router-config';
@@ -123,7 +124,7 @@ class TopMenu extends React.Component {
         </div>
         { Object.keys(this.props.currentUser).length === 0 ? "" :
           <div className="right-menu">
-            <Popover className="native-popover-notification" placement="bottom" width="400" trigger="click" content={(
+            <Popover className="native-popover-notification" placement="bottom" width="400" trigger="hover" content={(
               <Fragment>
                 <div className="notification-area-title">Notification</div>
                 <section className="popover-notification-list">
@@ -157,7 +158,9 @@ class TopMenu extends React.Component {
               />
             </div>
             <div className="profile-area">
-              <img className="head-img" src="https://shop.line-scdn.net/themeshop/v1/products/d5/46/a2/d546a2d4-27a8-48d7-8bf4-ad88815e8c75/17/WEBSTORE/icon_198x278.png"></img>
+              <img
+                className="head-img"
+                src={ this.props.currentUser.picture ? this.props.currentUser.picture.file : userDefaultImg} />
               <Popover className="popover-dropdown-menu-wrapper" placement="bottom" width="80" trigger="hover" content={(
                 <Fragment>
                   <section className="popover-dropdown-menu">

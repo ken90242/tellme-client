@@ -23,8 +23,8 @@ class SearchResult extends React.Component {
     };
   }
 
-  componentDidMount() {
-    getNewsSearch(this.props.match.params.q)
+  searchAll(query) {
+    getNewsSearch(query)
     .then((response) => {
       this.setState({
         newsList: response.data,
@@ -32,7 +32,7 @@ class SearchResult extends React.Component {
     })
     .catch(console.log)
     
-    getArticleSearch(this.props.match.params.q)
+    getArticleSearch(query)
     .then((response) => {
       this.setState({
         articleList: response.data,
@@ -40,13 +40,21 @@ class SearchResult extends React.Component {
     })
     .catch(console.log)
 
-    getQuestionSearch(this.props.match.params.q)
+    getQuestionSearch(query)
     .then((response) => {
       this.setState({
         questionList: response.data,
       })
     })
     .catch(console.log)
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.searchAll(nextProps.match.params.q);
+  }
+
+  componentDidMount() {
+    this.searchAll(this.props.match.params.q);
   }
 
   render() {
