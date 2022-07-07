@@ -15,7 +15,7 @@
     "element-theme-default": "^1.4.13",
     "jquery": "^3.5.1",
     "lodash": "^4.17.15",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "react": "^16.13.1",
     "react-dom": "npm:@hot-loader/react-dom",
     "react-edit-inline": "^1.0.8",
